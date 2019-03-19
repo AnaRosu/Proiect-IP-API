@@ -1,0 +1,4 @@
+Modalitate de incarcare a problemelor si a rezolvarilor aferente pe platforma.
+Sistem de creare cont, logare si delogare de pe platforma.
+Crearea si gestionarea bazei de date cu probleme.
+Stocare individuala (per user) a numarului de probleme rezolvate, punctajului total si alte diferite statistici.
