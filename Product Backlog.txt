@@ -24,6 +24,8 @@
 	-acordare punctaj integral/partial in functie de numarul de teste trecute
 
 7.Vizualizare clasament 
+	-interogarea bazei de date pentru afisarea clasamentului (un select ordonat descrescator)
+	-afisarea rezultatelor
 
 
 
