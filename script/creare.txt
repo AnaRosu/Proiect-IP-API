@@ -1,0 +1,26 @@
+CREATE TABLE `enunturi_probleme` (
+  `id` int(11) NOT NULL,
+  `titlu` text NOT NULL,
+  `enunt` text NOT NULL,
+  `rezolvare` text NOT NULL,
+  `categorie` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+
+CREATE TABLE `teste_probleme` (
+  `id` int(11) NOT NULL,
+  `id_problema` int(11) DEFAULT NULL,
+  `test1_in` text,
+  `test1_out` text,
+  `test2_in` text,
+  `test2_out` text,
+  `test3_in` text,
+  `test3_out` text,
+  `test4_in` text,
+  `test4_out` text,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `id_problema` FOREIGN KEY (`id`) REFERENCES `enunturi_probleme` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
