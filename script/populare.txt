@@ -1,0 +1,148 @@
+INSERT INTO `proiect_ip`.`enunturi_probleme`
+	(`id`,
+	`titlu`,
+	`enunt`,
+	`rezolvare`,
+	`categorie`)
+VALUES
+	(1 ,
+	'Numere consecutive',
+	'Fie a si b doua numere intregi. Scrieti un program care sa verifice daca a si b sunt numere consecutive ',
+	 '#include<iostream>
+	 using namespace std;
+	 int main() 
+	 {
+	 int a, b
+	 cin>>a>>b;
+	 if(a-b==1 || b-a==1) cout<<"da";
+	 else cout<<"nu";
+	 }', 
+	 9 );
+	 
+	 
+	 
+INSERT INTO `proiect_ip`.`enunturi_probleme`
+	(`id`,
+	`titlu`,
+	`enunt`,
+	`rezolvare`,
+	`categorie`)
+VALUES
+	(2 ,
+	'Numar maxim',
+	'Fie x un numar natural de trei cifre. Scrieti un program care sa elimine una dintre cifrele numarului astfel incat numarul de doua cifre ramas sa fie maxim.',
+	'#include<iostream>
+	 using namespace std;
+	 int main()
+	 {
+	 int x, c1, c2,c3;
+	 cin>>x;
+	 c1=x%10;
+	 c2=x/10%10;
+	 c3=x/100;
+	 if(c1<c2) cout<<c2<<c3;
+	 else if (c2<c3) cout<<c1<<c3;
+			 else cout<<c1<<c2;  
+	 }', 
+	 9 );
+
+	 
+INSERT INTO `proiect_ip`.`enunturi_probleme`
+	(`id`,
+	`titlu`,
+	`enunt`,
+	`rezolvare`,
+	`categorie`)
+VALUES
+	(3 ,
+	'Majuscule-minuscule',
+	'Se citeste de la tastatura o propozitie terminata cu ".",  construita din maxim 200 de caractere. Scrieti un program care inlocuieste toate literele mici din propozitie cu litere mari, fara a utiliza functii standard.',
+	'#include <iostream>
+	 using namespace std;
+	 int main()
+	 {
+	 char p[200];
+	 int i;
+	 cin.getline(p,200,".");
+	 for(i=0; p[i]; i++)
+	   if("a"<=p[i] &&  p[i]<="z")
+		 p[i]=p[i]-"a"+"A";
+	 cout<<p<<endl;
+	 return 0;
+	 }
+	 ', 
+	 11 );	
+
+
+INSERT INTO `proiect_ip`.`teste_probleme`
+	(`id`,
+	`id_problema`,
+	`test1_in`,
+	`test1_out`,
+	`test2_in`,
+	`test2_out`,
+	`test3_in`,
+	`test3_out`,
+	`test4_in`,
+	`test4_out`)
+VALUES
+	(1,
+	1,
+	"2,3",
+	"da",
+	"2,5",
+	"nu",
+	"5,6",
+	"da",
+	"7,2",
+	"nu");	 
+	
+INSERT INTO `proiect_ip`.`teste_probleme`
+	(`id`,
+	`id_problema`,
+	`test1_in`,
+	`test1_out`,
+	`test2_in`,
+	`test2_out`,
+	`test3_in`,
+	`test3_out`,
+	`test4_in`,
+	`test4_out`)
+VALUES
+	(2,
+	2,
+	"123",
+	"23",
+	"321",
+	"32",
+	"754",
+	"75",
+	"100",
+	"10");
+	
+	
+	
+	
+INSERT INTO `proiect_ip`.`teste_probleme`
+	(`id`,
+	`id_problema`,
+	`test1_in`,
+	`test1_out`,
+	`test2_in`,
+	`test2_out`,
+	`test3_in`,
+	`test3_out`,
+	`test4_in`,
+	`test4_out`)
+VALUES
+	(3,
+	3,
+	"Afara este frumos.",
+	"AFARA ESTE FRUMOS.",
+	"Astazi Merg In Oras.",
+	"ASTAZI MERG IN ORAS.",
+	"IASI.",
+	"IASI.",
+	"buna.",
+	"BUNA.");
+			 
