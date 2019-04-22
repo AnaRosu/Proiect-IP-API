@@ -27,3 +27,23 @@ CREATE TABLE `teste_probleme` (
   PRIMARY KEY (`id`),
   CONSTRAINT `id_problema` FOREIGN KEY (`id`) REFERENCES `enunturi_probleme` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `punctaje` (
+  `id` int(11) NOT NULL,
+  `id_utilizator` int(11) NOT NULL,
+  `id_problema` int(11) NOT NULL,
+  `punctaj` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_utilizator_idx` (`id_utilizator`),
+  KEY `id_problema_punctaj_idx` (`id_problema`),
+  CONSTRAINT `id_problema_punctaj` FOREIGN KEY (`id_problema`) REFERENCES `enunturi_probleme` (`id`),
+  CONSTRAINT `id_utilizator` FOREIGN KEY (`id_utilizator`) REFERENCES `utilizatori` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+CREATE TABLE `utilizatori` (
+  `id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
