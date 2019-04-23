@@ -169,4 +169,13 @@ public class Problem {
             return doc;
         }
 
+         public int getPunctaj(int userId, int problemId){
+            try{
+                PreparedStatement statement = myConn.prepareStatement("select punctaj from punctaje WHERE id_utilizator = ? and id_problema = ?");
+                statement.setInt(1,userId);
+                statement.setInt(2,problemId);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
 }
