@@ -17,9 +17,9 @@ public class AddProblem {
     }
 
     public static void main(String[] args) throws SQLException {
-        Problem problem = new Problem();
+        AddProblem addedProblem = new AddProblem();
         File xml = new File("/home/iulian/problem.xml");
-        problem.addProblem(xml);
+        addedProblem.addProblem(xml);
     }
 
     //concectarea la baza de date
