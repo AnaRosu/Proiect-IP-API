@@ -11,7 +11,7 @@ public class Main {
 
         //Apelez metoda serialize care afiseaza pe ercan continutul documentului insa trebuie  sa adaugati jar urile pentru parserul xml
         //File->ProjectStructure->Libraries-> semnul "+" din stanga si adaugati jar urile puse in folderul proiect
-       // System.out.println(pr.serialize(doc));
+        // System.out.println(pr.serialize(doc));
     }
 
 }
