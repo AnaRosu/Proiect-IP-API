@@ -1,4 +1,6 @@
 import org.w3c.dom.Document;
+
+import java.io.File;
 import java.lang.Object;
 
 public class Main {
@@ -12,6 +14,8 @@ public class Main {
         //Apelez metoda serialize care afiseaza pe ercan continutul documentului insa trebuie  sa adaugati jar urile pentru parserul xml
         //File->ProjectStructure->Libraries-> semnul "+" din stanga si adaugati jar urile puse in folderul proiect
         // System.out.println(pr.serialize(doc));
+        File xmlFile = new File("e:\\problem.xml");
+        pr.addProblem(xmlFile);
     }
 
 }

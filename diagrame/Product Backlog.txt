@@ -1,0 +1,31 @@
+1.Crearea bazei de date (tabele si relatiile dintre acestea)
+2.Sistem de creare cont 
+	-verificare unicitate email 
+	-comparare campuri "parola" si "confirma parola"
+	-introducerea numelui, prenumelui, parolei si a email-ului in baza de date 
+	-setarea numarului de probleme rezolvate si a punctajului total cu 0
+	-creare cont in baza de date cu permisiuni de select, insert si delete
+
+3.Sistem de logare 
+	-verificare email si parola
+	-logare in contul din baza de date
+
+4.Sistem de delogare
+	-delogare din contul din baza de date
+
+5.Abilitatea de a insera probleme in baza de date
+	-incarcarea enuntului problemei
+	-incarcarea rezolvarii problemei
+	-setarea unor valori input-output pentru problema incarcata
+
+6.Abilitatea de a propune rezolvari pentru problemele din baza de date
+	-incarcarea rezolvarii 
+	-actualizarea numarului de probleme rezolvate ale utilizatorului daca rezolvarea este corecta
+	-acordare punctaj integral/partial in functie de numarul de teste trecute
+
+7.Vizualizare clasament 
+	-interogarea bazei de date pentru afisarea clasamentului (un select ordonat descrescator)
+	-afisarea rezultatelor
+
+
+

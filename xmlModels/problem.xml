@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<problema>
+	<date>
+		<titlu>Adunare</titlu>
+		<enunt>Adunati 2 numere intregi x si y date la tastatura.</enunt>
+		<rezolvare> #include &lt;iostream&lt;
+					using namespace std;
+					int main() { cin >> x >> y; cout &lt;&lt; ; return 0;}
+							</rezolvare>
+		<categorie>9</categorie>
+	</date>
+	<teste>
+		<test1_in>x = 1; y = 2;</test1_in>
+		<test1_out>3 </test1_out>
+		<test2_in>x = 0; y = 0 </test2_in>
+		<test2_out>0</test2_out>
+		<test3_in>x = 4; y = 3 </test3_in>
+		<test3_out>7</test3_out>
+		<test4_in>x = 94 ; y = 2</test4_in>
+		<test4_out>96</test4_out>
+	</teste>
+</problema>
