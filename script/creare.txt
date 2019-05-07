@@ -2,7 +2,7 @@ CREATE DATABASE `proiect_ip` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8
 
 
 CREATE TABLE `enunturi_probleme` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `titlu` text NOT NULL,
   `enunt` text NOT NULL,
   `rezolvare` text NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE `enunturi_probleme` (
 
 
 CREATE TABLE `teste_probleme` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_problema` int(11) DEFAULT NULL,
   `test1_in` text,
   `test1_out` text,
@@ -30,7 +30,7 @@ CREATE TABLE `teste_probleme` (
 
 
 CREATE TABLE `punctaje` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_utilizator` int(11) NOT NULL,
   `id_problema` int(11) NOT NULL,
   `punctaj` int(11) DEFAULT NULL,
@@ -44,6 +44,14 @@ CREATE TABLE `punctaje` (
 
 
 CREATE TABLE `utilizatori` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `nr_probleme_rezolvate` int(11) DEFAULT NULL,
+  `nr_probleme_upload` int(11) DEFAULT NULL,
+  `nr_puncte` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
