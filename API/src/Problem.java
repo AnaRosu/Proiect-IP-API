@@ -121,15 +121,17 @@ public class Problem {
         return doc;
     }
 
-    public void getPunctaj(int userId, int problemId) {
-        Connection myConn = Database.getConnection();
+    public int getPunctaj(int userId, int problemId) {
         try {
             PreparedStatement statement = myConn.prepareStatement("select punctaj from punctaje WHERE id_utilizator = ? and id_problema = ?");
             statement.setInt(1, userId);
             statement.setInt(2, problemId);
+            ResultSet rs = statement.executeQuery();
+            if(rs.next())return rs.getInt("punctaj");
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return -1; // nu avem punctaj pentru problema data
     }
 
     int getAvailableIdForInsertion(PreparedStatement stmt) {
