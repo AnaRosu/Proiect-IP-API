@@ -10,6 +10,24 @@ public class Utilizator {
 
     Connection myConn = Database.getConnection();
 
+	public boolean utilizatorulExista(String username){
+        boolean exist = false;
+        try {
+
+            PreparedStatement statement = myConn.prepareStatement("select * from utilizatori where username=? ");
+            statement.setString(1, username);
+            statement.executeQuery();
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                exist = true;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return exist;
+    }
+	
     public int addUtilizator(String username, String password, String email) {
         //returneaza 1 daca username-ul nu exista in baza de date. Adauga utilizatorul
         //returneza -1 daca username-ul exista in baza de date. Nu adauga utilizatorul
