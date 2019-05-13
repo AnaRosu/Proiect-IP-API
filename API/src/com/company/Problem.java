@@ -148,4 +148,20 @@ public class Problem {
             e.printStackTrace();
         }
     }
+	
+	//insereaza punctajul unui utilizator in tabela punctaje pentru o anumita problema
+    public void punePunctaj(int userID, int problemaID, int punctaj) {
+        
+        try {
+            PreparedStatement statement = myConn.prepareStatement("insert into punctaje (id_utilizator,id_problema,punctaj) values (?,?,?)");
+            statement.setInt(1, userID);
+            statement.setInt(2, problemaID);
+            statement.setInt(3, punctaj);
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
 }
