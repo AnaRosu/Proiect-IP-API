@@ -1,3 +1,4 @@
+package com.company;
 
 
 import java.sql.Connection;
@@ -12,7 +13,7 @@ public class Utilizator {
     public int addUtilizator(String username, String password, String email) {
         //returneaza 1 daca username-ul nu exista in baza de date. Adauga utilizatorul
         //returneza -1 daca username-ul exista in baza de date. Nu adauga utilizatorul
-        
+
         try {
 
             PreparedStatement statement = myConn.prepareStatement("select * from utilizatori where username=? ");
@@ -21,7 +22,7 @@ public class Utilizator {
             ResultSet rs = statement.executeQuery();
 
             if (rs.next()) {
-                return -1; //inserare nereusita. 
+                return -1; //inserare nereusita.
             }
 
             statement = myConn.prepareStatement("insert into utilizatori (username,password,email) values (?,?,?)");
@@ -29,7 +30,7 @@ public class Utilizator {
             statement.setString(2, password);
             statement.setString(3, email);
             statement.executeUpdate();
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

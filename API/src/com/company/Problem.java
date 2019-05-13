@@ -1,18 +1,13 @@
+package  com.company;
+
 import java.io.File;
 import java.io.IOException;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.*;
-import java.util.List;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
 
@@ -24,51 +19,7 @@ import org.xml.sax.SAXException;
 
 public class Problem {
     Connection myConn = Database.getConnection();
-
-    // returnez un document XML
-    public static Document createXML(ResultSet rs)
-            throws ParserConfigurationException, SQLException {
-        //se creeaza un nou document
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = factory.newDocumentBuilder();
-        Document doc = builder.newDocument();
-
-        //elementul ROOT
-        //radacina documentului XML
-        Element results = doc.createElement("Teste");
-        doc.appendChild(results);
-        //Obținem meta-datele
-        //acestea sunt folosite pentru a structura documentul
-        ResultSetMetaData rsmd = rs.getMetaData();
-        int colCount = rsmd.getColumnCount();
-
-        while (rs.next()) {   //adaugam elementele de tip Row
-            Element row = doc.createElement("Row");
-            results.appendChild(row);
-
-            for (int i = 1; i <= colCount; i++) {
-                String columnName = rsmd.getColumnName(i); //numele coloanei
-                Object value = rs.getObject(i); //vaoarea coloanei
-                //un nou element este creat pentru fiecare coloana si adaugat la randul corespunzator
-                Element node = doc.createElement(columnName);
-                node.appendChild(doc.createTextNode(value.toString()));
-                row.appendChild(node);
-            }
-        }
-        /*
-        // sciem continutul intr-un fisier XML
-        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-        Transformer transformer = null;
-        try {
-            transformer = transformerFactory.newTransformer();
-            DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File("D:\\teste.xml"));
-            transformer.transform(source, result);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
-        return doc;
-    }
+    XmlDoc document = new XmlDoc();
 
     //o testare simpla sa vad daca merge
     public void testIfFunctioning() {
@@ -86,7 +37,6 @@ public class Problem {
 
     public String getEnuntProblema(int id) {
         try {
-            //Statement myStmt = myConn.createStatement();
             PreparedStatement statement = myConn.prepareStatement("SELECT * FROM enunturi_probleme" + " WHERE id = ?");
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
@@ -104,13 +54,13 @@ public class Problem {
     public Document getTeste(int id) {
         Document doc = null;
         try {
-            //Statement myStmt = myConn.createStatement();
-            PreparedStatement statement = myConn.prepareStatement("select test1_in, test1_out, test2_in, test2_out, test3_in, test3_out, " +
+             PreparedStatement statement = myConn.prepareStatement("select test1_in, test1_out, " +
+                    "test2_in, test2_out, test3_in, test3_out, " +
                     "test4_in, test4_out from teste_probleme" + " WHERE id_problema = ?");
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
 
-            doc = createXML(rs);
+            doc = document.createXML(rs, "D://teste.xml", "Teste");
 
             rs.close();
             statement.close();
@@ -163,15 +113,15 @@ public class Problem {
 
 
             //Get available id for problem
-            PreparedStatement stmt = myConn.prepareStatement("select max(id) + 1 as maxId  from enunturi_probleme");
+            PreparedStatement stmt = myConn.prepareStatement("select max(proiectip12345.enunturi_probleme.id) + 1 as maxId  from proiectip12345.enunturi_probleme");
             int problemAvailableId = getAvailableIdForInsertion(stmt);
 
             //Get available id for test
-            stmt = myConn.prepareStatement("select max(id) + 1 as maxId  from teste_probleme");
+            stmt = myConn.prepareStatement("select max(proiectip12345.enunturi_probleme.id) + 1 as maxId  from proiectip12345.teste_probleme");
             int testAvailableId = getAvailableIdForInsertion(stmt);
 
 
-            stmt = myConn.prepareStatement("insert into enunturi_probleme values(" +
+            stmt = myConn.prepareStatement("insert into proiectip12345.enunturi_probleme values(" +
                     Integer.toString(problemAvailableId) + ",'" +
                     document.getElementsByTagName("titlu").item(0).getTextContent() + "','" +
                     document.getElementsByTagName("enunt").item(0).getTextContent() + " ',' " +
@@ -179,7 +129,7 @@ public class Problem {
                     Integer.parseInt(document.getElementsByTagName("categorie").item(0).getTextContent()) + ")");
             stmt.executeUpdate();
 
-            stmt = myConn.prepareStatement("insert into teste_probleme values(" +
+            stmt = myConn.prepareStatement("insert into proiectip12345.teste_probleme values(" +
                     Integer.toString(testAvailableId) + "," +
                     Integer.toString(problemAvailableId) + ",'" +
                     document.getElementsByTagName("test1_in").item(0).getTextContent() + "','" +
